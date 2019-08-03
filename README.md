@@ -3,7 +3,7 @@ Web Service criado com Visual Studio na plataforma .Net core Web Api 1.0(NECESS�
 
 # Rodar o projeto:
 ### Com Visual Studio ou no diretório da aplicação rodar o comando:
-dotnet run
+##### dotnet run
 
 Atentar que obtive saida diferente de portas executando o projeto com visual studio e pelo terminal, mesmo setando a porta default como 5001 o visual studio apontava para outra
 
