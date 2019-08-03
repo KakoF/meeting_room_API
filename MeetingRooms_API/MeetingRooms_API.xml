@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MeetingRooms_API</name>
+    </assembly>
+    <members>
+        <member name="M:MeetingRooms_API.Controllers.AgendamentosController.GetAll">
+            <summary>
+            Recupera todos os agendamentos
+            </summary>
+            <returns>Lista do Model Agendamento contendo todas as informações</returns>
+        </member>
+        <member name="M:MeetingRooms_API.Controllers.AgendamentosController.GetById(System.Int64)">
+            <summary>
+            Recupera um item de agendamento
+            </summary>
+            <param name="id">Identificador do Agendamento</param>
+            <returns>Model do tipo Agendamento contendo todas as informações</returns>
+        </member>
+        <member name="M:MeetingRooms_API.Controllers.AgendamentosController.Create(MeetingRooms_API.Models.Agendamento)">
+            <summary>
+            Cria um agendamento por post de formulário
+            </summary>
+            <returns>Novo Model de Agendamento que foi registrado</returns>
+        </member>
+        <member name="M:MeetingRooms_API.Controllers.SalasController.GetAll">
+            <summary>
+            Recupera todas as salas
+            </summary>
+            <returns>Lista do Model Sala contendo todas as informações</returns>
+        </member>
+        <member name="M:MeetingRooms_API.Controllers.SalasController.GetById(System.Int64)">
+            <summary>
+            Recupera um item de sala
+            </summary>
+            <param name="id">Identificador da Sala</param>
+            <returns>Model do tipo Agendamento contendo todas as informações</returns>
+        </member>
+        <member name="M:MeetingRooms_API.Controllers.SignupController.RequestSignup(MeetingRooms_API.Models.Usuario)">
+            <summary>
+            Cadastra um novo Usuário
+            </summary>
+            <param name="usuario">Espera o objeto do tipo Usuário preenchido</param>
+            <returns>Objeto novo Usuário Cadastrado</returns>
+        </member>
+        <member name="M:MeetingRooms_API.Controllers.TokenController.RequestToken(MeetingRooms_API.Models.Usuario)">
+            <summary>
+            Recupera o Usuário ao tentar se Autenticar e já valida o Token
+            </summary>
+            <param name="email">E-mail do Usuário</param>
+            <param name="senha">Senha do Usuário</param>
+            <returns>Objeto do Tipo Usuário com o Token</returns>
+        </member>
+        <member name="M:MeetingRooms_API.Controllers.UsuariosController.GetById(System.Int64)">
+            <summary>
+            Recupera um Usuário
+            </summary>
+            <param name="id">Identificador do Usuário</param>
+            <returns>Model do tipo Usuário contendo todas as informações</returns>
+        </member>
+    </members>
+</doc>
