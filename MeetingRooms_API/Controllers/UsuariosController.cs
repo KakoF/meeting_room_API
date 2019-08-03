@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MeetingRooms_API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    [AllowAnonymous]
     public class UsuariosController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepositorio;
@@ -24,6 +24,7 @@ namespace MeetingRooms_API.Controllers
         /// </summary>
         /// <param name="id">Identificador do Usuário</param>
         /// <returns>Model do tipo Usuário contendo todas as informações</returns>
+        [Authorize]
         [HttpGet("{id}", Name = "GetUsuario")]
         public IActionResult GetById(long id)
         {
@@ -34,5 +35,23 @@ namespace MeetingRooms_API.Controllers
             }
             return new ObjectResult(usuario);
         }
+
+        /// <summary>
+        /// Recupera um Usuário
+        /// </summary>
+        /// <param name="id">Identificador do Usuário</param>
+        /// <returns>Model do tipo Usuário contendo todas as informações</returns>
+        [AllowAnonymous]
+        [HttpPost("autenticar")]
+        public IActionResult Autenticar([FromBody] Usuario usuario)
+        {
+            var _usuario = _usuarioRepositorio.Autenticar(usuario.Email, usuario.Senha);
+
+            if (_usuario == null)
+                return Unauthorized();
+
+            return new ObjectResult(_usuario);
+        }
+
     }
 }

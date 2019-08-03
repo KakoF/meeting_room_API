@@ -30,6 +30,8 @@ namespace MeetingRooms_API.Repositorio
             return Convert.ToBase64String(outputBuffer);
         }
 
+       
+
         public void Add(Usuario usuario)
         {
             _contexto.Usuarios.Add(usuario);
@@ -52,6 +54,7 @@ namespace MeetingRooms_API.Repositorio
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 return null;
 
+            password = this.HashSenha(password.ToLower());
             var user = _contexto.Usuarios.SingleOrDefault(x => x.Email == email && x.Senha == password);
 
             // check if username exists
@@ -77,6 +80,17 @@ namespace MeetingRooms_API.Repositorio
         {
             _contexto.Usuarios.Update(usuario);
             _contexto.SaveChanges();
+        }
+
+        public string Decrypt(string senha)
+        {
+            byte[] key = new byte[8] { 1, 2, 3, 4, 5, 6, 7, 8 };
+            byte[] iv = new byte[8] { 1, 2, 3, 4, 5, 6, 7, 8 };
+            SymmetricAlgorithm algorithm = DES.Create();
+            ICryptoTransform transform = algorithm.CreateDecryptor(key, iv);
+            byte[] inputbuffer = Convert.FromBase64String(senha);
+            byte[] outputBuffer = transform.TransformFinalBlock(inputbuffer, 0, inputbuffer.Length);
+            return Encoding.Unicode.GetString(outputBuffer);
         }
     }
 }

@@ -53,8 +53,8 @@ namespace MeetingRooms_API
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "kako",
-                    ValidAudience = "kako",
+                    ValidIssuer = "access_token_meeting_rooms",
+                    ValidAudience = "access_token_meeting_rooms",
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(Configuration["SecurityKey"]))
                 };

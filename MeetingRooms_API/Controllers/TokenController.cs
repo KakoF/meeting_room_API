@@ -35,7 +35,7 @@ namespace MeetingRooms_API.Controllers
         [HttpPost]
         public IActionResult RequestToken([FromBody] Usuario request)
         {
-            request.Senha = _usuarioRepositorio.HashSenha(request.Senha);
+            request.Senha = _usuarioRepositorio.Decrypt(request.Senha);
             request = _usuarioRepositorio.Autenticar(request.Email, request.Senha);
             if (request != null)
             {
@@ -56,21 +56,21 @@ namespace MeetingRooms_API.Controllers
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
-                     issuer: "kako",
-                     audience: "kako",
+                     issuer: "access_token_meeting_rooms",
+                     audience: "access_token_meeting_rooms",
                      claims: claims,
                      expires: DateTime.Now.AddMinutes(30),
                      signingCredentials: creds);
 
                 request.Token = new JwtSecurityTokenHandler().WriteToken(token);
-                request.Senha = null;
-                return new ObjectResult(request);
+                //request.Senha = null;
+                //return new ObjectResult(request);
                 //return Ok(new{ request, sendToken });
-                //return Ok(new
-                //{
-                //    token = new JwtSecurityTokenHandler().WriteToken(token)
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token)
 
-                //});
+                });
             }
             return BadRequest("Credenciais inválidas...");
         }

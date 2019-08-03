@@ -58,5 +58,12 @@
             <param name="id">Identificador do Usuário</param>
             <returns>Model do tipo Usuário contendo todas as informações</returns>
         </member>
+        <member name="M:MeetingRooms_API.Controllers.UsuariosController.Autenticar(MeetingRooms_API.Models.Usuario)">
+            <summary>
+            Recupera um Usuário
+            </summary>
+            <param name="id">Identificador do Usuário</param>
+            <returns>Model do tipo Usuário contendo todas as informações</returns>
+        </member>
     </members>
 </doc>

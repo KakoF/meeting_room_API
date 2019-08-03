@@ -19,5 +19,7 @@ namespace MeetingRooms_API.Repositorio
         void Update(Usuario user);
 
         string HashSenha(string senha);
+
+        string Decrypt(string senha);
     }
 }

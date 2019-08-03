@@ -43,7 +43,6 @@ namespace MeetingRooms_API.Controllers
 
             usuario.Senha = _usuarioRepositorio.HashSenha(usuario.Senha);
            _usuarioRepositorio.Add(usuario);
-            usuario.Senha = null;
             return new ObjectResult(usuario);
         }
 
