@@ -13,6 +13,9 @@ namespace MeetingRooms_API.Models
         public int Sala_Id { get; set; }
         [ForeignKey("Sala_Id")]
         public Sala Sala { get; set; }
+        public int Usuario_id { get; set; }
+        [ForeignKey("Usuario_id")]
+        public Usuario Usuario { get; set; }
         public DateTime Periodo { get; set; }
     }
 }
