@@ -9,6 +9,7 @@ namespace MeetingRooms_API.Repositorio
     public interface IAgendamentoRepository
     {
         void Add(Agendamento agendamento);
+        bool Existe(Agendamento agendamento);
         IEnumerable<Agendamento> GetAll();
         Agendamento Find(long id);
     }

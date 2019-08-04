@@ -20,6 +20,11 @@ namespace MeetingRooms_API.Repositorio
             _contexto.SaveChanges();
         }
 
+        public bool Existe(Agendamento agendamento)
+        {
+            return (_contexto.Agendamentos.Where(u => u.Sala_Id == agendamento.Sala_Id && u.Periodo == agendamento.Periodo).Count() > 0 ? true : false);
+        }
+
         public Agendamento Find(long id)
         {
             return _contexto.Agendamentos.FirstOrDefault(u => u.Id == id);

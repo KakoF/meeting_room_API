@@ -6,6 +6,7 @@ using MeetingRooms_API.Models;
 using MeetingRooms_API.Repositorio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Octokit.Internal;
 
 namespace MeetingRooms_API.Controllers
 {
@@ -53,6 +54,11 @@ namespace MeetingRooms_API.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] Agendamento Agendamento)
         {
+            if (_AgendamentoRepositorio.Existe(Agendamento))
+            {
+                return StatusCode(500, "Está sala já está cadastrada nesse período");
+            }
+
             if (Agendamento == null)
             {
                 return BadRequest();
