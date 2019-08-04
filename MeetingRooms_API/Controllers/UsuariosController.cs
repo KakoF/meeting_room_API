@@ -50,6 +50,7 @@ namespace MeetingRooms_API.Controllers
             if (_usuario == null)
                 return Unauthorized();
 
+            _usuario.Senha = null;
             return new ObjectResult(_usuario);
         }
 
