@@ -44,11 +44,6 @@ namespace MeetingRooms_API.Repositorio
             return _contexto.Usuarios.FirstOrDefault(u => u.Id == id);
         }
 
-        public IEnumerable<Usuario> GetAll()
-        {
-            return _contexto.Usuarios.ToList();
-        }
-
         public Usuario Autenticar(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
@@ -68,20 +63,7 @@ namespace MeetingRooms_API.Repositorio
             // authentication successful
             return user;
         }
-
-        public void Remove(long id)
-        {
-            var entity = _contexto.Usuarios.First(u => u.Id == id);
-            _contexto.Usuarios.Remove(entity);
-            _contexto.SaveChanges();
-        }
-
-        public void Update(Usuario usuario)
-        {
-            _contexto.Usuarios.Update(usuario);
-            _contexto.SaveChanges();
-        }
-
+      
         public string Decrypt(string senha)
         {
             byte[] key = new byte[8] { 1, 2, 3, 4, 5, 6, 7, 8 };

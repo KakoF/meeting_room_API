@@ -26,11 +26,11 @@ namespace MeetingRooms_API.Controllers
         }
 
         /// <summary>
-        /// Recupera o Usuário ao tentar se Autenticar e já valida o Token
+        /// Gera o Token para o usuário
         /// </summary>
         /// <param name="email">E-mail do Usuário</param>
         /// <param name="senha">Senha do Usuário</param>
-        /// <returns>Objeto do Tipo Usuário com o Token</returns>
+        /// <returns>Objeto Token tipo JWT</returns>
         [AllowAnonymous]
         [HttpPost]
         public IActionResult RequestToken([FromBody] Usuario request)
@@ -42,17 +42,11 @@ namespace MeetingRooms_API.Controllers
                 var claims = new[]
                 {
                      new Claim(ClaimTypes.Name, request.Id.ToString())
-                     //new Claim(ClaimTypes.Name, request.Nome)
                 };
 
-                //recebe uma instancia da classe SymmetricSecurityKey 
-                //armazenando a chave de criptografia usada na criação do token
                 var key = new SymmetricSecurityKey(
                             Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
 
-                //recebe um objeto do tipo SigninCredentials contendo a chave de 
-                //criptografia e o algoritmo de segurança empregados na geração 
-                // de assinaturas digitais para tokens
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
@@ -63,9 +57,6 @@ namespace MeetingRooms_API.Controllers
                      signingCredentials: creds);
 
                 request.Token = new JwtSecurityTokenHandler().WriteToken(token);
-                //request.Senha = null;
-                //return new ObjectResult(request);
-                //return Ok(new{ request, sendToken });
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token)

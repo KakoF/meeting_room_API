@@ -37,10 +37,11 @@ namespace MeetingRooms_API.Controllers
         }
 
         /// <summary>
-        /// Recupera um Usuário
+        /// Autentica um Usuário
         /// </summary>
-        /// <param name="id">Identificador do Usuário</param>
-        /// <returns>Model do tipo Usuário contendo todas as informações</returns>
+        /// <param name="email">E-mail do Usuário</param>
+        /// <param name="senha">Senha do Usuário</param>
+        /// <returns>Model do tipo Usuário se ele estiver autenticado, contendo todas as informações</returns>
         [AllowAnonymous]
         [HttpPost("autenticar")]
         public IActionResult Autenticar([FromBody] Usuario usuario)

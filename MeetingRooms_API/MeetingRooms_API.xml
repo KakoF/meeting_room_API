@@ -45,11 +45,11 @@
         </member>
         <member name="M:MeetingRooms_API.Controllers.TokenController.RequestToken(MeetingRooms_API.Models.Usuario)">
             <summary>
-            Recupera o Usuário ao tentar se Autenticar e já valida o Token
+            Gera o Token para o usuário
             </summary>
             <param name="email">E-mail do Usuário</param>
             <param name="senha">Senha do Usuário</param>
-            <returns>Objeto do Tipo Usuário com o Token</returns>
+            <returns>Objeto Token tipo JWT</returns>
         </member>
         <member name="M:MeetingRooms_API.Controllers.UsuariosController.GetById(System.Int64)">
             <summary>
@@ -60,10 +60,11 @@
         </member>
         <member name="M:MeetingRooms_API.Controllers.UsuariosController.Autenticar(MeetingRooms_API.Models.Usuario)">
             <summary>
-            Recupera um Usuário
+            Autentica um Usuário
             </summary>
-            <param name="id">Identificador do Usuário</param>
-            <returns>Model do tipo Usuário contendo todas as informações</returns>
+            <param name="email">E-mail do Usuário</param>
+            <param name="senha">Senha do Usuário</param>
+            <returns>Model do tipo Usuário se ele estiver autenticado, contendo todas as informações</returns>
         </member>
     </members>
 </doc>
